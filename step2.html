@@ -1,96 +1,134 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <base target="_top">
+  <meta charset="UTF-8">
+  <title>Welcome to TKG Resources</title>
+
+  <!-- Select2 Styling (if needed later) -->
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f5f5f5;
+    body, html {
       margin: 0;
       padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4f6f8;
+      scroll-behavior: smooth;
+    }
+
+    #splash {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to right, #0078D4, #c81d25);
+      color: white;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
-      height: 100vh;
-      animation: splashFade 1.5s ease-in;
+      animation: fadeOut 1.5s ease-out forwards;
+      animation-delay: 3s;
+      z-index: 999;
     }
 
-    @keyframes splashFade {
-      from { opacity: 0; transform: scale(0.95); }
-      to { opacity: 1; transform: scale(1); }
+    @keyframes fadeOut {
+      to {
+        opacity: 0;
+        visibility: hidden;
+      }
     }
 
-    .container {
-      background: white;
+    header {
+      background: linear-gradient(to right, #0078D4, #c81d25);
+      color: white;
       padding: 20px;
-      max-width: 600px;
-      width: 90%;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      border-radius: 10px;
       text-align: center;
-      animation: splashFade 1.5s ease-in;
+      font-size: 1.6em;
+      font-weight: bold;
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
 
-    h2 {
-      color: #333;
-      margin-bottom: 10px;
+    .section {
+      max-width: 900px;
+      margin: 80px auto;
+      padding: 40px;
+      background: white;
+      border-radius: 6px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.05);
+      text-align: center;
     }
 
-    p {
-      color: #555;
+    .section h2 {
+      color: #c81d25;
       margin-bottom: 20px;
+      font-size: 1.8em;
     }
 
-    a {
-      display: inline-block;
+    .section p {
+      font-size: 1.1em;
+      color: #444;
       margin-bottom: 30px;
     }
 
     button {
-      background-color: #4285f4;
+      padding: 12px 24px;
+      background-color: #c81d25;
       color: white;
       border: none;
-      padding: 10px 20px;
-      font-size: 16px;
       border-radius: 5px;
+      font-size: 16px;
       cursor: pointer;
     }
 
     button:hover {
-      background-color: #3367d6;
+      background-color: #a0171d;
     }
 
-    img {
+    #delayedImage {
       max-width: 100%;
       height: auto;
+      margin-top: 30px;
       border-radius: 8px;
       box-shadow: 0 0 8px rgba(0,0,0,0.1);
       opacity: 0;
       transition: opacity 1s ease-in;
     }
 
-    img.visible {
+    #delayedImage.visible {
       opacity: 1;
     }
   </style>
 </head>
 <body>
-  <div class="container">
+
+  <div id="splash">
+    <h1>Welcome TKG Consultants</h1>
+    <p>Loading the next step…</p>
+  </div>
+
+  <header>The Kirkland Group Resources Portal</header>
+
+  <div class="section">
     <h2>Access Restricted Materials</h2>
     <p>Please confirm that you're signed into your designated Google work account before proceeding.</p>
     <a href="https://sites.google.com/view/2024-2025tkgresourcespage/home">
       <button>Continue to Resources</button>
     </a>
+
+    <!-- Hidden image that will appear after splash -->
     <img id="delayedImage" src="https://raw.githubusercontent.com/kirklandgroupms/tkg-splash-page/main/TKG%20Weboage%20Pic.jpg" alt="TKG Image">
   </div>
 
   <script>
-    // Wait for splash animation to finish, then show image
+    // Reveal image after splash animation ends
     window.addEventListener('load', () => {
       setTimeout(() => {
         document.getElementById('delayedImage').classList.add('visible');
-      }, 1500); // Matches splash animation duration
+      }, 4500); // 3s delay + 1.5s fadeOut = 4.5s total
     });
   </script>
+
 </body>
 </html>

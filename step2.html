@@ -12,10 +12,10 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
-      animation: fadeIn 1s ease-in;
+      animation: splashFade 1.5s ease-in;
     }
 
-    @keyframes fadeIn {
+    @keyframes splashFade {
       from { opacity: 0; transform: scale(0.95); }
       to { opacity: 1; transform: scale(1); }
     }
@@ -28,7 +28,7 @@
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
       border-radius: 10px;
       text-align: center;
-      animation: fadeIn 1.2s ease-in;
+      animation: splashFade 1.5s ease-in;
     }
 
     h2 {
@@ -65,6 +65,12 @@
       height: auto;
       border-radius: 8px;
       box-shadow: 0 0 8px rgba(0,0,0,0.1);
+      opacity: 0;
+      transition: opacity 1s ease-in;
+    }
+
+    img.visible {
+      opacity: 1;
     }
   </style>
 </head>
@@ -75,7 +81,16 @@
     <a href="https://sites.google.com/view/2024-2025tkgresourcespage/home">
       <button>Continue to Resources</button>
     </a>
-    <img src="https://raw.githubusercontent.com/kirklandgroupms/tkg-splash-page/main/TKG%20Weboage%20Pic.jpg" alt="TKG Image">
+    <img id="delayedImage" src="https://raw.githubusercontent.com/kirklandgroupms/tkg-splash-page/main/TKG%20Weboage%20Pic.jpg" alt="TKG Image">
   </div>
+
+  <script>
+    // Wait for splash animation to finish, then show image
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('delayedImage').classList.add('visible');
+      }, 1500); // Matches splash animation duration
+    });
+  </script>
 </body>
 </html>
